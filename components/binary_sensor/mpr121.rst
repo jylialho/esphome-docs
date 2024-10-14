@@ -43,6 +43,16 @@ required to be set up in your configuration for this sensor to work.
         touch_threshold: 12
         release_threshold: 6
 
+    sensor:
+      - platform: mpr121
+        id: capacitance_0
+        channel: 0
+        name: "Capacitance 0"
+      - platform: mpr121
+        id: capacitance_1
+        channel: 1
+        name: "Capacitance 1"
+
 Configuration variables:
 ------------------------
 
@@ -105,6 +115,27 @@ For example:
 
 - Using channel 2 and 5 as touch and channel 6 as GPIO is okay
 - Using channel 2 and 5 as touch and channel 4 as GPIO is not okay
+
+Sensor
+-------------
+
+The ``mpr121`` sensor provides capacitance indication for configured binary touch electrodes.
+First, setup a :ref:`mpr121-component` and then use this sensor platform to create individual
+sensor for each touch electrode channel.
+
+.. code-block:: yaml
+
+    sensor:
+      - platform: mpr121
+        id: capacitance_0
+        channel: 0
+        name: Capacitance 0
+      - platform: mpr121
+        id: capacitance_1
+        channel: 1
+        name: Capacitance 1
+
+The ``channel`` refers to the ELEx pin number on the MPR121 chip.
 
 See Also
 --------
